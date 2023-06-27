@@ -36,7 +36,7 @@ public class Player_Script : MonoBehaviour
     private GameObject SpawnManager;
 
     [SerializeField] 
-    private TimeBar_Script _timeBar;
+    private ShieldBar_Script _timeBar;
     private int _maxTime = 30000;
     private int _currentTime;
 

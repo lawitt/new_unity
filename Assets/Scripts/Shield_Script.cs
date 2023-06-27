@@ -9,7 +9,7 @@ public class Shield_Script : MonoBehaviour
     private bool _started = false; 
 
     [SerializeField]
-    private TimeBar_Script _shieldBar;
+    private ShieldBar_Script _shieldBar;
 
     void Start ()
     {

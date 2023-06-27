@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 
-public class TimeBar_Script : MonoBehaviour
+public class ShieldBar_Script : MonoBehaviour
 {
     [SerializeField]
     private Slider _shieldTimeSlider;
