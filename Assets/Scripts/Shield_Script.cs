@@ -11,6 +11,9 @@ public class Shield_Script : MonoBehaviour
     [SerializeField]
     private ShieldBar_Script _shieldBar;
 
+    [SerializeField]
+    private GameObject _player;
+
     void Start ()
     {
         _currentTime = _maxTime;
@@ -19,6 +22,11 @@ public class Shield_Script : MonoBehaviour
 
     void Update()
     {
+        if (_started) 
+        {
+            transform.position = new Vector3(_player.transform.position.x, _player.transform.position.y+2f,(_player.transform.position.z));
+
+        }
         _currentTime--;
         _shieldBar.updateTime(_currentTime);
         if (_currentTime <= 0)

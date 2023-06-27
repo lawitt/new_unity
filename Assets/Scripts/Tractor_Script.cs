@@ -9,40 +9,51 @@ public class Tractor_Script : MonoBehaviour
     private bool _movetoRight;
 
     [SerializeField]
-    private Collider BC;
+    private GameObject _player;
 
     private bool _move = false;
+
+    private int _there = 0;
 
     void Update()
     {
         if (_movetoRight) 
         {
-            if (_move) 
+            if (_move && _there <= 200) 
             {
                 transform.position = new Vector3((transform.position.x + 0.03f), transform.position.y, transform.position.z);
+                _there++;
+            }
+
+            if ((_player.transform.position.x - transform.position.x) >= 10 && (transform.position.y - _player.transform.position.y) <= 1)
+            {
+                _move = true;
             }
         }
         else 
         {
-            if (_move) 
+            if (_move && _there <= 200) 
             {
                 transform.position = new Vector3((transform.position.x - 0.03f), transform.position.y, transform.position.z);
+                _there++;
+            }
+
+            if ((_player.transform.position.x - transform.position.x) >= -10 && (transform.position.y - _player.transform.position.y) <= 1)
+            {
+                _move = true;
             }
         }
+
         
     }
 
+
     void OnTriggerEnter (Collider other) 
     {
-        if (other.CompareTag("Player") && other == BC) 
+        if (other.CompareTag("Player")) 
         {
             other.GetComponent<Player_Script>().damage();
             Debug.Log("Collision with tractor");
-        }
-
-        if (other.CompareTag("Player")) 
-        {
-            _move = true;
         }
     }
 }
