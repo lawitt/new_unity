@@ -98,7 +98,7 @@ LightmapSettings:
     m_TrainingDataDestination: TrainingData
     m_LightProbeSampleCountMultiplier: 4
   m_LightingDataAsset: {fileID: 0}
-  m_LightingSettings: {fileID: 0}
+  m_LightingSettings: {fileID: 4890085278179872738, guid: 5c14be7c8b4a84caa87a132b388f64dc, type: 2}
 --- !u!196 &4
 NavMeshSettings:
   serializedVersion: 2
@@ -396,6 +396,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _enemyPrefab: {fileID: 7665279196980313092, guid: 825150ab07c434e4b8eb94d56ce2ac1e, type: 3}
   _uiManager: {fileID: 1627099064}
+  _sparrowPrefab: {fileID: 0}
 --- !u!4 &909849023
 Transform:
   m_ObjectHideFlags: 0
@@ -734,7 +735,7 @@ GameObject:
   - component: {fileID: 1204093833}
   - component: {fileID: 1204093832}
   m_Layer: 0
-  m_Name: Cube (2)
+  m_Name: Cube3
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -950,7 +951,7 @@ GameObject:
   - component: {fileID: 1587979653}
   - component: {fileID: 1587979652}
   m_Layer: 0
-  m_Name: Cube (1)
+  m_Name: Cube2
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -1164,7 +1165,7 @@ GameObject:
   - component: {fileID: 1688997956}
   - component: {fileID: 1688997955}
   m_Layer: 0
-  m_Name: Cube
+  m_Name: Cube1
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -1299,6 +1300,10 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: -188.493
       objectReference: {fileID: 0}
+    - target: {fileID: 4065861989489976498, guid: 7506b01796795462ea3294771b6f578a, type: 3}
+      propertyPath: m_Mesh
+      value: 
+      objectReference: {fileID: -2012753172922253885, guid: 91e4778cdfb185d4d9bfe81556dc4333, type: 3}
     - target: {fileID: 4065861989489976508, guid: 7506b01796795462ea3294771b6f578a, type: 3}
       propertyPath: _scene
       value: 
