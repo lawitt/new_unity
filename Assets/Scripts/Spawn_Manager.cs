@@ -8,13 +8,18 @@ public class Spawn_Manager : MonoBehaviour
     
     [SerializeField]
     private GameObject _enemyPrefab;
-    private float _delay = 1f;
+    private float _delayEnemy = 1f;
 
     private bool _alive = true;
     private bool _win = false;
 
     [SerializeField]
     private UI_Script _uiManager;
+
+    [SerializeField]
+    private GameObject _sparrowPrefab;
+
+    private float _delaySparrow = 10f;
 
     void Start()
     {
@@ -39,7 +44,9 @@ public class Spawn_Manager : MonoBehaviour
         while(_alive && !_win)
         {
             Instantiate(_enemyPrefab, transform.position + new Vector3(Random.Range(-10f, 10f), 10f, 0f), Quaternion.identity, this.transform);
-            yield return new WaitForSeconds(_delay);
+            yield return new WaitForSeconds(_delayEnemy);
         }
+        Instantiate(_sparrowPrefab, transform.position + new Vector3(Random.Range(-10f, 10f), Random.Range(-10f, 10f), 0f), Quaternion.identity, this.transform);
+            yield return new WaitForSeconds(_delaySparrow);
     }
 }

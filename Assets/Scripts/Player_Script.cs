@@ -79,6 +79,12 @@ public class Player_Script : MonoBehaviour
 
     }
 
+    public void recovery() 
+    {
+        _lives++;
+        _uiManager.updateLives(_lives);
+    }
+
     public void deleteItems() 
     {
         //remove all enemies after death
@@ -105,6 +111,8 @@ public class Player_Script : MonoBehaviour
         if (transform.position.y < -10f) 
         {
             transform.position = new Vector3(0f, 2f, 0f); 
+            _lives--;
+            _uiManager.updateLives(_lives);
         }
     }
 }

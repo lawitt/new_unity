@@ -18,7 +18,6 @@ public class Bullet_Behaviour : MonoBehaviour
         if (transform.position.y > 40f) 
         {
             Destroy(this.gameObject);
-            //destroy
         }
     }
 }
