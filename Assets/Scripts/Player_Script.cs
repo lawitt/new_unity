@@ -35,11 +35,19 @@ public class Player_Script : MonoBehaviour
     [SerializeField]
     private GameObject SpawnManager;
 
+    [SerializeField] 
+    private TimeBar_Script _timeBar;
+    private int _maxTime = 30000;
+    private int _currentTime;
+
     void Start()
     {
         //show amount of lives in beginning and set player at start position
         _uiManager.updateLives(_lives);
         transform.position = new Vector3(0f, 0f, 0f);
+        _currentTime = _maxTime;
+        _timeBar.setMaxTime(_maxTime);
+
     }
 
     void Update()
@@ -51,6 +59,13 @@ public class Player_Script : MonoBehaviour
         {
             Instantiate(_bulletPrefab, transform.position + new Vector3(0f, 0.7f, 0f), Quaternion.identity);
             _nextFireTime = Time.time + _fireCoolDownTime;
+        }
+
+        _currentTime--;
+        _timeBar.updateTime(_currentTime);
+        if (_currentTime <= 0)
+        {
+            gameOver();
         }
     }
 
@@ -65,16 +80,7 @@ public class Player_Script : MonoBehaviour
         //if no lives left, die
         if(_lives == 0)
         {
-
-            if(SpawnManager != null)
-            {
-                //remove player object
-                SpawnManager.GetComponent<Spawn_Manager>().onPlayerDeath();
-                Destroy(this.gameObject);
-                Debug.Log("Death");
-            }
-
-            deleteItems();
+            gameOver();
         }
 
     }
@@ -114,5 +120,18 @@ public class Player_Script : MonoBehaviour
             _lives--;
             _uiManager.updateLives(_lives);
         }
+    }
+
+    void gameOver () 
+    {
+        if(SpawnManager != null)
+            {
+                //remove player object
+                SpawnManager.GetComponent<Spawn_Manager>().onPlayerDeath();
+                Destroy(this.gameObject);
+                Debug.Log("Death");
+            }
+
+            deleteItems();
     }
 }
