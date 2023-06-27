@@ -353,7 +353,7 @@ RectTransform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 798425771}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalPosition: {x: 0, y: 0, z: -5}
   m_LocalScale: {x: 1.4, y: 1.4, z: 1.4}
   m_ConstrainProportionsScale: 1
   m_Children: []
@@ -707,7 +707,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _uiManager: {fileID: 1627099064}
-  _nextScene: 1
+  _nextScene: OneToTwo
+  _sceneScreen: {fileID: 0}
 --- !u!64 &1175527691
 MeshCollider:
   m_ObjectHideFlags: 0
@@ -1283,7 +1284,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 8141093481112919855, guid: fb86e6c5f41674f8bb7c5dac628fb14f, type: 3}
       propertyPath: m_RootOrder
-      value: 2
+      value: 3
       objectReference: {fileID: 0}
     - target: {fileID: 8141093481112919855, guid: fb86e6c5f41674f8bb7c5dac628fb14f, type: 3}
       propertyPath: m_AnchorMax.x
@@ -1493,6 +1494,10 @@ PrefabInstance:
       propertyPath: _scene
       value: 
       objectReference: {fileID: 1175527690}
+    - target: {fileID: 4065861989489976508, guid: 7506b01796795462ea3294771b6f578a, type: 3}
+      propertyPath: _timeBar
+      value: 
+      objectReference: {fileID: 1746654639}
     - target: {fileID: 4065861989489976508, guid: 7506b01796795462ea3294771b6f578a, type: 3}
       propertyPath: _uiManager
       value: 

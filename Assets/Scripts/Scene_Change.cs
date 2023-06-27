@@ -11,7 +11,7 @@ public class Scene_Change : MonoBehaviour
     private UI_Script _uiManager;
 
     [SerializeField]
-    private int _nextScene;
+    private string _nextScene;
     
     private void OnTriggerEnter(Collider other)
     {
@@ -19,7 +19,6 @@ public class Scene_Change : MonoBehaviour
         if (other.CompareTag("Player")) 
         {
             SceneManager.LoadScene(_nextScene);
-
         }
     }
 }

@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class Player_Script : MonoBehaviour
 {
@@ -132,6 +133,8 @@ public class Player_Script : MonoBehaviour
                 Debug.Log("Death");
             }
 
-            deleteItems();
+        deleteItems();
+        
+        SceneManager.LoadScene("GameOverScene");
     }
 }
