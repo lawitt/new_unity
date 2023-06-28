@@ -41,6 +41,14 @@ public class Player_Script : MonoBehaviour
     private int _maxTime = 30000;
     private int _currentTime;
 
+    /**private float _colorChannel = 1f;
+    [SerializeField]
+    private Material _firstMat;
+    [SerializeField]
+    private Material _secondMat;
+    private Material[] _otherMaterial = new Material[] {_firstMat, _secondMat};
+    private MaterialPropertyBlock _mpb;**/
+
     void Start()
     {
         //show amount of lives in beginning and set player at start position
@@ -48,6 +56,12 @@ public class Player_Script : MonoBehaviour
         transform.position = new Vector3(0f, 0f, 0f);
         _currentTime = _maxTime;
         _timeBar.setMaxTime(_maxTime);
+        /*** SET MATERIAL
+        if (_mpb == null)
+        {
+            _mpb = new MaterialPropertyBlock();
+            _mpb.Clear();
+        }***/
 
     }
 
@@ -68,6 +82,11 @@ public class Player_Script : MonoBehaviour
         {
             gameOver();
         }
+        //if no lives left, die
+        if(_lives <= 0)
+        {
+            gameOver();
+        }
     }
 
     //function to react after got damaged
@@ -77,13 +96,6 @@ public class Player_Script : MonoBehaviour
         _lives --;
         _uiManager.updateLives(_lives);
         Debug.Log("Damage"+ _lives);
-
-        //if no lives left, die
-        if(_lives == 0)
-        {
-            gameOver();
-        }
-
     }
 
     public void recovery() 
@@ -126,15 +138,24 @@ public class Player_Script : MonoBehaviour
     void gameOver () 
     {
         if(SpawnManager != null)
-            {
-                //remove player object
-                SpawnManager.GetComponent<Spawn_Manager>().onPlayerDeath();
-                Destroy(this.gameObject);
-                Debug.Log("Death");
-            }
-
-        deleteItems();
-        
-        SceneManager.LoadScene("GameOverScene");
+        {
+            //remove player object
+            SpawnManager.GetComponent<Spawn_Manager>().onPlayerDeath();
+            deleteItems();
+            SceneManager.LoadScene("GameOverScene");
+            Debug.Log("Death");
+            Destroy(this.gameObject);
+        }
     }
+
+    /***public void changeColor () 
+    {
+        // CHANGE MATERIAL
+       _colorChannel -= 0.5f;
+        _mpb.SetColor("_Color", new Color(_colorChannel, 0, _colorChannel, 1f));
+        this.GetComponent<Renderer>().SetPropertyBlock(_mpb); 
+
+        MeshRenderer my_renderer = GetComponent<MeshRenderer>();
+        my_renderer.material = other_material[0];
+    }***/
 }
