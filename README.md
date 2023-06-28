@@ -11,14 +11,16 @@ The fox can be moved to the left and right by pressing the respective arrows. Fu
   * moving from left to right
   * jumping
   * shooting bullets
+* levels
+  * the game is seperated in 3 levels with different features
+  * from one level to the other there appears a screen explaining the new features
+  * the background and the speed of the animals changes to match the current level
 * time
-  * to addd some time pressure to the game we included a hourglass restricting the player in the time he is allowed to take per level
+  * to add some time pressure to the game we included a hourglass restricting the player in the time he is allowed to take per level
 * platforms
   * stable platforms
   * platforms moving from side to side
   * arrangement of platforms becomes more difficult to mangage with increasing levels
-* environment
-  * background of the scenes changes to match the current enemies
 * enemies
   * level 1-3: eagles falling from the sky 
   * level 2: tractors driving on platforms
