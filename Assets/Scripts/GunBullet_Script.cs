@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class GunBullet_Script : MonoBehaviour
 {
-    //gun fires bullets, which can shoot the enemies to save the life of the player
+    //gun fires bullets, which damage the player, when they collide
     
     [SerializeField]
     private float _gunBulletSpeed = 3f;
@@ -31,6 +31,7 @@ public class GunBullet_Script : MonoBehaviour
         }
     }
 
+    //when player collides with bullet, the player gets damaged
     void OnTriggerEnter(Collider other)
     {
         if(other.CompareTag("Player"))

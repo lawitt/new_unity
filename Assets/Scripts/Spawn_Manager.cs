@@ -8,6 +8,8 @@ public class Spawn_Manager : MonoBehaviour
     
     [SerializeField]
     private GameObject _enemyPrefab;
+
+    [SerializeField]
     private float _delayEnemy = 1f;
 
     private bool _alive = true;
@@ -17,9 +19,7 @@ public class Spawn_Manager : MonoBehaviour
     private UI_Script _uiManager;
 
     [SerializeField]
-    private GameObject _sparrowPrefab;
-
-    //private float _delaySparrow = 10f;
+    private float _height;
 
     void Start()
     {
@@ -30,9 +30,9 @@ public class Spawn_Manager : MonoBehaviour
     public void onPlayerDeath()
     {
         _alive = false;
-        _uiManager.gameOver();
     }
 
+    //when player won, set win true, so no new enemies are spawn
     public void onPlayerWin()
     {
         _win = true;
@@ -43,7 +43,7 @@ public class Spawn_Manager : MonoBehaviour
     {
         while(_alive && !_win)
         {
-            Instantiate(_enemyPrefab, transform.position + new Vector3(Random.Range(-10f, 10f), 10f, 0f), Quaternion.identity, this.transform);
+            Instantiate(_enemyPrefab, transform.position + new Vector3(Random.Range(-20f, 20f), _height, 0f), Quaternion.identity, this.transform);
             yield return new WaitForSeconds(_delayEnemy);
         }
     }

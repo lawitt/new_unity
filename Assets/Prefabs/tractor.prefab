@@ -53,6 +53,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _movetoRight: 0
   _player: {fileID: 0}
+  _arrived: 120
 --- !u!65 &5920289060071447836
 BoxCollider:
   m_ObjectHideFlags: 0

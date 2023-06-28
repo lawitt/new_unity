@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class Tractor_Script : MonoBehaviour
 {
-    //when the player jumps on the same platform as the tractor, then the tractor starts moving
+    //when the player jumps on the same platform as the tractor, then the tractor starts moving, when they collide, the player loses a live
     [SerializeField]
     private bool _movetoRight;
 
@@ -13,41 +13,48 @@ public class Tractor_Script : MonoBehaviour
 
     private bool _move = false;
 
-    private int _there = 0;
+    //indicates when tractor should stop
+    [SerializeField]
+    private int _arrived = 150;
 
-    void Update()
+    //to detect direction of movement
+    private float _directionX;
+
+    private float _boundaryX;
+
+    void Start ()
     {
-        if (_movetoRight) 
+        //select the dierection of movement
+        if (_movetoRight)
         {
-            if (_move && _there <= 200) 
-            {
-                transform.position = new Vector3((transform.position.x + 0.03f), transform.position.y, transform.position.z);
-                _there++;
-            }
-
-            if ((_player.transform.position.x - transform.position.x) >= 10 && (transform.position.y - _player.transform.position.y) <= 1)
-            {
-                _move = true;
-            }
+            _directionX = 0.05f;
+            _boundaryX = 10;
         }
         else 
         {
-            if (_move && _there <= 200) 
-            {
-                transform.position = new Vector3((transform.position.x - 0.03f), transform.position.y, transform.position.z);
-                _there++;
-            }
-
-            if ((_player.transform.position.x - transform.position.x) >= -10 && (transform.position.y - _player.transform.position.y) <= 1)
-            {
-                _move = true;
-            }
+            _directionX = -0.05f;
+            _boundaryX = -10;
         }
-
-        
     }
 
+    //tractor moves, after activating until reaching the boundary
+    void Update()
+    {
+        //move the tractor in specific direction
+        if (_move && _arrived >= 0) 
+        {
+            transform.position = new Vector3((transform.position.x + _directionX), transform.position.y, transform.position.z);
+            _arrived--;
+        }
 
+        //if player is in boundary, start the move
+        if ((_player.transform.position.x - transform.position.x) >= _boundaryX && (transform.position.y - _player.transform.position.y) <= 1)
+        {
+            _move = true;
+        }
+    }
+
+    //damage the player, when colliding with the tractor
     void OnTriggerEnter (Collider other) 
     {
         if (other.CompareTag("Player")) 

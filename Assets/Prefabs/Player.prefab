@@ -103,6 +103,12 @@ MonoBehaviour:
   RB: {fileID: 4065861989489976496}
   _bulletPrefab: {fileID: 8159603294114086794, guid: d578ca4e6f7084fcc8e52ab275ffad19, type: 3}
   SpawnManager: {fileID: 0}
+  _timeBar: {fileID: 0}
+  _firstMat: {fileID: 2100000, guid: 4ad23863efbf001479d8ebd01ef00654, type: 2}
+  _secondMat: {fileID: 2100000, guid: 2f71605ddac7f4610acdc02cfe3d116c, type: 2}
+  _thirdMat: {fileID: 2100000, guid: 4637ca75596c74fd9936c8feea0f350d, type: 2}
+  _fourthMat: {fileID: 2100000, guid: fa1652a657a11444aa9d0225f2120f1a, type: 2}
+  _fifthMat: {fileID: 2100000, guid: 9dbe647b7b4174fbbbb92206b3469378, type: 2}
 --- !u!65 &4065861989489976509
 BoxCollider:
   m_ObjectHideFlags: 0

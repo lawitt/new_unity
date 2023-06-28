@@ -4,6 +4,8 @@ using UnityEngine;
 
 public class Gun_Script : MonoBehaviour
 {
+    //guns are placed in the game, when the player collides with the collider of the gun, the gun starts to shoot bullets
+
     //gun bullet time delay
     private float _nextGunFireTime = 1f;
     [SerializeField]
@@ -17,9 +19,11 @@ public class Gun_Script : MonoBehaviour
     [SerializeField]
     private GameObject _gunBulletPrefabRight;
 
+    //to decide in which direction the gun shoots
     [SerializeField]
     private bool _directionRight;
 
+    //the gun shoots bullets horizontally
     void Update()
     {
         if (_shoot && _nextGunFireTime < Time.time)
@@ -37,6 +41,7 @@ public class Gun_Script : MonoBehaviour
         }
     }
 
+    //the gun starts shooting, when player collides with collider
     void OnTriggerEnter(Collider other)
     {
         if (other.CompareTag("Player"))

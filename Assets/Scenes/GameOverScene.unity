@@ -524,7 +524,7 @@ GameObject:
   - component: {fileID: 1621743524}
   - component: {fileID: 1621743523}
   m_Layer: 5
-  m_Name: StartText
+  m_Name: Text
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -539,7 +539,7 @@ RectTransform:
   m_GameObject: {fileID: 1621743521}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1.2006, y: 1.2006, z: 1.2006}
+  m_LocalScale: {x: 4.38171, y: 4.38171, z: 4.38171}
   m_ConstrainProportionsScale: 1
   m_Children: []
   m_Father: {fileID: 1593888152}
@@ -547,8 +547,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 5, y: -99}
-  m_SizeDelta: {x: 425.0943, y: 432.6251}
+  m_AnchoredPosition: {x: 10, y: 303}
+  m_SizeDelta: {x: 294.0724, y: 90.0163}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1621743523
 MonoBehaviour:
@@ -812,8 +812,8 @@ RectTransform:
   m_GameObject: {fileID: 2031921487}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_ConstrainProportionsScale: 0
+  m_LocalScale: {x: 3.5623, y: 3.5623, z: 3.5623}
+  m_ConstrainProportionsScale: 1
   m_Children:
   - {fileID: 175152455}
   m_Father: {fileID: 1593888152}
@@ -821,7 +821,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 2, y: 98}
+  m_AnchoredPosition: {x: 2, y: 259}
   m_SizeDelta: {x: 160, y: 30}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &2031921489
@@ -846,7 +846,7 @@ MonoBehaviour:
   m_Transition: 1
   m_Colors:
     m_NormalColor: {r: 1, g: 1, b: 1, a: 1}
-    m_HighlightedColor: {r: 0.9607843, g: 0.9607843, b: 0.9607843, a: 1}
+    m_HighlightedColor: {r: 0.79215693, g: 0.75294125, b: 0.7019608, a: 1}
     m_PressedColor: {r: 0.8313726, g: 0.56078434, b: 0.25882354, a: 1}
     m_SelectedColor: {r: 0.79215693, g: 0.75294125, b: 0.7019608, a: 1}
     m_DisabledColor: {r: 0.78431374, g: 0.78431374, b: 0.78431374, a: 0.5019608}
@@ -948,6 +948,12 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _newGameLevel: Level 1
+  _player: {fileID: 0}
+  _firstMat: {fileID: 0}
+  _secondMat: {fileID: 0}
+  _thirdMat: {fileID: 0}
+  _fourthMat: {fileID: 0}
+  _fifthMat: {fileID: 0}
 --- !u!4 &2086625508
 Transform:
   m_ObjectHideFlags: 0

@@ -5,7 +5,7 @@ using UnityEngine.SceneManagement;
 
 public class Player_Script : MonoBehaviour
 {
-    //player jumps through the environment of the game
+    //player jumps through the environment of the game and tries to reach the goal
     
     //move and jump
     [SerializeField]
@@ -37,32 +37,37 @@ public class Player_Script : MonoBehaviour
     private GameObject SpawnManager;
 
     [SerializeField] 
-    private ShieldBar_Script _timeBar;
-    private int _maxTime = 30000;
+    private TimeBar_Script _timeBar;
+    [SerializeField]
+    private int _maxTime = 10000; //time the player has to win the game
     private int _currentTime;
 
-    /**private float _colorChannel = 1f;
+    //get the different materials to change color
     [SerializeField]
     private Material _firstMat;
     [SerializeField]
     private Material _secondMat;
-    private Material[] _otherMaterial = new Material[] {_firstMat, _secondMat};
-    private MaterialPropertyBlock _mpb;**/
+    [SerializeField]
+    private Material _thirdMat;
+    [SerializeField]
+    private Material _fourthMat;
+    [SerializeField]
+    private Material _fifthMat;
+
+    List<Material> _otherMaterial = new List<Material>();
+    private int _index = 0;
 
     void Start()
     {
-        //show amount of lives in beginning and set player at start position
+        //show amount of lives in beginning
         _uiManager.updateLives(_lives);
+        //set player at start position
         transform.position = new Vector3(0f, 0f, 0f);
+        //start the time bar
         _currentTime = _maxTime;
         _timeBar.setMaxTime(_maxTime);
-        /*** SET MATERIAL
-        if (_mpb == null)
-        {
-            _mpb = new MaterialPropertyBlock();
-            _mpb.Clear();
-        }***/
 
+        changeToColor();
     }
 
     void Update()
@@ -76,13 +81,17 @@ public class Player_Script : MonoBehaviour
             _nextFireTime = Time.time + _fireCoolDownTime;
         }
 
+        //update the time bar
         _currentTime--;
         _timeBar.updateTime(_currentTime);
+
+        //when time is over, game over
         if (_currentTime <= 0)
         {
             gameOver();
         }
-        //if no lives left, die
+
+        //if no lives left, game over
         if(_lives <= 0)
         {
             gameOver();
@@ -98,6 +107,7 @@ public class Player_Script : MonoBehaviour
         Debug.Log("Damage"+ _lives);
     }
 
+    //function to receive axtra live, after eating bird and update UI
     public void recovery() 
     {
         _lives++;
@@ -126,15 +136,15 @@ public class Player_Script : MonoBehaviour
             _nextJumpTime = Time.time + _coolDownTime;
         }
 
-        //teleport the player back after falling down
+        //teleport the player back after falling down and losing a live
         if (transform.position.y < -10f) 
         {
             transform.position = new Vector3(0f, 2f, 0f); 
-            _lives--;
-            _uiManager.updateLives(_lives);
+            damage();
         }
     }
 
+    //when time is up or lost last live, the player lost and game Over is shown
     void gameOver () 
     {
         if(SpawnManager != null)
@@ -148,14 +158,17 @@ public class Player_Script : MonoBehaviour
         }
     }
 
-    /***public void changeColor () 
+    //change material to the chosen one
+    void changeToColor ()
     {
-        // CHANGE MATERIAL
-       _colorChannel -= 0.5f;
-        _mpb.SetColor("_Color", new Color(_colorChannel, 0, _colorChannel, 1f));
-        this.GetComponent<Renderer>().SetPropertyBlock(_mpb); 
+        _otherMaterial.Add(_firstMat);
+        _otherMaterial.Add(_secondMat);
+        _otherMaterial.Add(_thirdMat);
+        _otherMaterial.Add(_fourthMat);
+        _otherMaterial.Add(_fifthMat);
 
-        MeshRenderer my_renderer = GetComponent<MeshRenderer>();
-        my_renderer.material = other_material[0];
-    }***/
+        _index = PlayerPrefs.GetInt("MaterialKey", 0);
+        GetComponent<Renderer>().material = _otherMaterial[_index];
+    }
+
 }

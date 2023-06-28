@@ -4,15 +4,19 @@ using UnityEngine;
 
 public class Sparrow_Script : MonoBehaviour
 {
+    //sparrow appears on top of level and flies down with time
+    //if player catches bird, the player receives an extra live
     private float positionX;
     private float positionY;
     private int _count = 0;
 
+    //start at certain position
     void Start ()
     {
         transform.position = new Vector3(2.5f, 27.2f, 0f);
     }
 
+    //sparrow flies down the environment randomly
     void Update()
     {
         positionX = transform.position.x + Random.Range(-0.2f, 0.2f);

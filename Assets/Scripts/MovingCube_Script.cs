@@ -4,20 +4,18 @@ using UnityEngine;
 
 public class MovingCube_Script : MonoBehaviour
 {
-    //some cubes should move along the X-Axis and should stop, when the player jumps on top of the cube
+    //some cubes move along the X-Axis, so the player reaches other cubes, which the player can not reach with jumping
+    //the cubes just move between two boundaries
     [SerializeField]
     private float _boundaryLeft;
-
     [SerializeField]
     private float _boundaryRight;
 
     private bool _directionRight;
 
-    private bool _move;
-
     void Update()
     {
-        //select the direction, the cube should move
+        //if cube reaches boundary, change direction
         if(transform.position.x >= _boundaryRight)
         {
             _directionRight = false;
@@ -28,31 +26,16 @@ public class MovingCube_Script : MonoBehaviour
             _directionRight = true;
         }
 
-        //moves the cube, if player is not on top
-        if (_move) 
+        //move in the certain direction
+        if (_directionRight)
         {
-            if (_directionRight)
-            {
-                transform.position = new Vector3((transform.position.x + 0.01f), transform.position.y, transform.position.z);
-            }
-            else 
-            {
-                transform.position = new Vector3((transform.position.x - 0.01f), transform.position.y, transform.position.z);
-            }
+            transform.position = new Vector3((transform.position.x + 0.01f), transform.position.y, transform.position.z);
+        }
+        else 
+        {
+            transform.position = new Vector3((transform.position.x - 0.01f), transform.position.y, transform.position.z);
         }
 
-    }
-
-    //detects, whether the player is on top of the cube 
-    void OnTriggerEnter(Collider other) 
-    {
-        if (other.CompareTag("Player")) {
-            _move = false;
-        }
-        else
-        {
-            _move = true;
-        }
     }
 
 }

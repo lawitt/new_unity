@@ -5,10 +5,7 @@ using UnityEngine.SceneManagement;
 
 public class Scene_Change : MonoBehaviour
 {
-    //change the scene from "level 1" to "level 2"
-
-    [SerializeField]
-    private UI_Script _uiManager;
+    //change the scene to next scene
 
     [SerializeField]
     private string _nextScene;
