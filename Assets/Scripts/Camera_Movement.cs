@@ -25,7 +25,7 @@ public class Camera_Movement : MonoBehaviour
         {
             //get current position and place camera there
             Vector3 newPosition = target.transform.position + offset;
-            transform.position = newPosition;
+            transform.position = newPosition; 
         }
     
     }
